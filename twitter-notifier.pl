@@ -46,12 +46,12 @@ while ($sresp->is_success){
         foreach my $zz (@{$jsresp}) {
 
             my $text =  $zz->{'text'};
-
+            $text =~ s/\$/\\\$/gi;
             $text =~ s/"//gi;
             $text =~ s/&amp;/&/gi;
             my $url = $text;
 	    $url =~ s%.*(?=http://)%%i; 
-            $lastid = $zz->{'id'};
+	    if( $lastid < $zz->{'id'}) { $lastid = $zz->{'id'}; }
 	    $cmd  = "/usr/local/bin/terminal-notifier -message \"" . $text . "\" -open \"". $url ."\" -title \"Briefing.com\" -appIcon \"http://www.briefing.com/favicon.ico\"";
 	    system $cmd;
         }
