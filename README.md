@@ -5,4 +5,6 @@ This is a perl script that displays OSX notifications for twitter feeds.  It all
 Requires:
 
 ** an API key from  https://apps.twitter.com/
+
+
 ** Terminal notifier (install w/ brew)
